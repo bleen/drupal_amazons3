@@ -59,6 +59,21 @@ function amazons3_admin() {
     '#default_value' => variable_get('amazons3_cname', 0),
   );
 
+  $schemes = array(
+    'https' => 'https',
+    'http' => 'http'
+  );
+  $form['amazons3_domain_scheme'] = array(
+    '#type' => 'select',
+    '#title' => t('CDN Domain Scheme'),
+    '#default_value' => variable_get('amazons3_domain_scheme', 'https'),
+    '#options' => $schemes,
+    '#states' => array(
+      'visible' => array(
+        ':input[id=edit-amazons3-cname]' => array('checked' => TRUE),
+      ),
+    ),
+  );
   $form['amazons3_domain'] = array(
     '#type' => 'textfield',
     '#title' => t('CDN Domain Name'),

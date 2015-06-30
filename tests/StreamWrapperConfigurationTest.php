@@ -60,6 +60,9 @@ class StreamWrapperConfigurationTest extends \PHPUnit_Framework_TestCase {
     $config->setDomain('cdn.example.com');
     $this->assertEquals('cdn.example.com', $config->getDomain());
 
+    $config->setDomainScheme('http');
+    $this->assertEquals('http', $config->getDomainScheme());
+
     $config->setHostname('api.example.com');
     $this->assertEquals('api.example.com', $config->getHostname());
 
@@ -131,6 +134,7 @@ class StreamWrapperConfigurationTest extends \PHPUnit_Framework_TestCase {
       'amazons3_hostname' => 'api.example.com',
       'amazons3_cname' => TRUE,
       'amazons3_domain' => 'static.example.com',
+      'amazons3_domain_scheme' => 'http',
       'amazons3_cloudfront' => TRUE,
       'amazons3_cloudfront_private_key' => '/dev/null',
       'amazons3_cloudfront_keypair_id' => 'example',
@@ -145,6 +149,7 @@ class StreamWrapperConfigurationTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals($config->getBucket(), 'default.example.com');
     $this->assertEquals($config->getHostname(), 'api.example.com');
     $this->assertEquals($config->getDomain(), 'static.example.com');
+    $this->assertEquals($config->getDomainScheme(), 'http');
     $this->assertEquals($config->isCloudFront(), TRUE);
     $this->assertInstanceOf('Aws\CloudFront\CloudFrontClient', $config->getCloudFront());
     $this->assertEquals($config->isCaching(), TRUE);
