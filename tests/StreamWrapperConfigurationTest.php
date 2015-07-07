@@ -60,6 +60,7 @@ class StreamWrapperConfigurationTest extends \PHPUnit_Framework_TestCase {
     $config->setDomain('cdn.example.com');
     $this->assertEquals('cdn.example.com', $config->getDomain());
 
+    $this->assertEquals('https', $config->getDomainScheme());
     $config->setDomainScheme('http');
     $this->assertEquals('http', $config->getDomainScheme());
 
