@@ -66,6 +66,7 @@ function amazons3_admin() {
   $form['amazons3_domain_scheme'] = array(
     '#type' => 'select',
     '#title' => t('CDN Domain Scheme'),
+    '#description' => t('Use the selected scheme when serving files from Amazon S3 using CloudFront or another CDN.'),
     '#default_value' => variable_get('amazons3_domain_scheme', 'https'),
     '#options' => $schemes,
     '#states' => array(
